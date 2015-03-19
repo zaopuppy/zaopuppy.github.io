@@ -1,7 +1,11 @@
 ---
+layout: post
+title:  "First Post"
+date:   2014-11-26 00:54:45
+categories: jekyll update
 ---
 
-# First post
+# First Post
 
 ^_^
 

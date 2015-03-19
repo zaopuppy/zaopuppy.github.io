@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Match C-String with RE"
+title:  "Match C style String with RE"
 date:   2014-11-26 00:54:45
 categories: jekyll update
 ---

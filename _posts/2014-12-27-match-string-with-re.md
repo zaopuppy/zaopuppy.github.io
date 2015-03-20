@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Match C style String with RE"
+title:  "Match C style string with RE"
 date:   2014-11-26 00:54:45
 categories: jekyll update
 ---
@@ -58,23 +58,23 @@ Good. 接下来考虑带转义字符的情况, 比如
 
     ".*?(\\)*?"
 
-恩哼! 很容易嘛, 赶紧试试
+赶紧试试
 
     >>> re.match(r'".*?(\\)*?"', '"This is a book.\nIts name is \\"The One.\\\\""', re.DOTALL)
     <_sre.SRE_Match object; span=(0, 31), match='"This is a book.\nIts name is \\"'>
 
-靠...不对. 为什么呢?
+...不对. 为什么呢?
 
 `*`表示0次以上的重复, 也就是其实`\"`也是可以被匹配上的... 那么如何排除这种情况呢? 在手册里查了一下, 发现`(?<!...)`, 用来排除前置的情况刚刚好!
 
     ".*?(?<!\)(\\)*?"
 
-赶快试试!!(咆哮)
+赶快试试!
 
     >>> re.match(r'".*?(?<!\\)(\\\\)*?"', '"This is a book.\nIts name is \\"The One.\\""', re.DOTALL)
     <_sre.SRE_Match object; span=(0, 42), match='"This is a book.\nIts name is \\"The One.\\""'>
 
-哈哈哈哈哈~~~~
+Nice.
 
 最后说一句题外话, 如果去掉开头和结尾的`"`, 是没有办法正确匹配的, 必须将`*?`替换为`*`, 想想为什么?
 
